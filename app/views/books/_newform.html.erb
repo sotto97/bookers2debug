@@ -1,4 +1,14 @@
 <%= form_for(book) do |f| %>
+	<% if book.errors.any? %>
+	<p>error</p>
+	  <div id="error_explanation" class="alert_error">
+	    <ul>
+	    <% book.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
 	<div class="field row">
 		<%= f.label :title %>
 		<%= f.text_field :title, class: "col-xs-12 book_title" %>
