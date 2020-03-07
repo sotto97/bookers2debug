@@ -27,7 +27,10 @@
 					<% @users.each do |user| %>
 					<tr>
 						<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
-						<td><%= user.name%></td>
+						<td><%= user.name %></td>
+						<td><%= link_to "フォロー数 #{user.relationships.count}", user_path(user.id) %></td>
+						<td><%= link_to "フォロワー数 #{user.followers.count}", user_relationships_path(user.id) %></td>
+						<td><%= render 'relationships/follow_button', user: user %></td>
 						<td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
 					</tr>
 					<% end %>
